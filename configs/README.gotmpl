@@ -1,0 +1,7 @@
+## Repositories
+{{ range $key, $value := . }}
+## {{ $key }} {{ range $value }}
+- [{{ .Author }}/{{ .Name }}]({{ .URL }}) - {{ .Description }}
+  - {{ .Stargazers }} ⭐️ | latest push to default branch {{ .LatestPushToDefault }} | last pushed {{ .LastPushed }} | last updated {{ .LastUpdated }}
+  {{ end }}
+{{ end }}
