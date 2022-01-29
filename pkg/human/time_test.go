@@ -32,24 +32,24 @@ func TestHello(t *testing.T) {
 		want := "within a day"
 		assertCorrectMessage(t, got, want)
 	})
-	t.Run("duration > 24 && < 7d", func(t *testing.T) {
+	t.Run("duration > 24h && < 7d", func(t *testing.T) {
 		got := Duration(lastWeek)
 		want := "within a week"
 		assertCorrectMessage(t, got, want)
 	})
 	t.Run("duration > 7d && < 30d", func(t *testing.T) {
 		got := Duration(lastMonth)
-		want := "within 1 weeks"
+		want := "within 2 weeks"
 		assertCorrectMessage(t, got, want)
 	})
 	t.Run("duration > 30d && < 1a", func(t *testing.T) {
 		got := Duration(lastQuarter)
-		want := "within 5 weeks"
+		want := "within 6 weeks"
 		assertCorrectMessage(t, got, want)
 	})
 	t.Run("duration > 365d && < 2a", func(t *testing.T) {
 		got := Duration(lastYear)
-		want := "within 30 weeks"
+		want := "within 31 weeks"
 		assertCorrectMessage(t, got, want)
 	})
 	t.Run("duration > 1a", func(t *testing.T) {
