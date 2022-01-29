@@ -7,8 +7,10 @@ import (
 	"os"
 	"strings"
 	"text/template"
+	"time"
 
-	"github.com/dustin/go-humanize"
+	"github.com/refs/roi/pkg/human"
+
 	"github.com/google/go-github/v42/github"
 )
 
@@ -69,9 +71,9 @@ func main() {
 				URL:                 repoURL,
 				Description:         repo.GetDescription(),
 				Stargazers:          repo.GetStargazersCount(),
-				LatestPushToDefault: humanize.Time(*latestCommit.Author.Date),
-				LastPushed:          humanize.Time(repo.GetPushedAt().Time),
-				LastUpdated:         humanize.Time(repo.GetUpdatedAt().Time),
+				LatestPushToDefault: human.Duration(time.Since(*latestCommit.Author.Date)),
+				LastPushed:          human.Duration(time.Since(repo.GetPushedAt().Time)),
+				LastUpdated:         human.Duration(time.Since(repo.GetUpdatedAt().Time)),
 			}
 
 			repositories[category] = append(repositories[category], r)
