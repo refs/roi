@@ -16,7 +16,7 @@ func Duration(duration time.Duration) string {
 		return "within an hour"
 	} else if days == 0 {
 		return "within a day"
-	} else if weeks := days / 7; weeks >= 1 {
+	} else if weeks := days / 7; weeks > 1 {
 		if years := days / 365; years > 0 {
 			if years == 1 {
 				return "within a year"
@@ -25,7 +25,7 @@ func Duration(duration time.Duration) string {
 		}
 
 		return fmt.Sprintf("within %v weeks", weeks+1)
-	} else if weeks < 1 {
+	} else if weeks <= 1 {
 		return "within a week"
 	}
 
